@@ -16,6 +16,17 @@ use JsonException;
 trait ExplicitContent
 {
     /**
+     * Explicit Content Detection
+     *
+     * <code>
+     * $params = [
+     *       'file_url'                    => '',  // string     - Required. direct URL to photo
+     *       'providers'                   => '',  // string     - (Optional). providers separated by commas (Default in Config)
+     * ]
+     * </code>
+     *
+     * @link https://app.edenai.run/bricks/text/moderation
+     *
      * @throws EdenAIException|JsonException
      */
     public function checkExplicitContent(array $params): ExplicitContentObject

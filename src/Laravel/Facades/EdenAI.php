@@ -2,6 +2,7 @@
 
 namespace EdenAI\Laravel\Facades;
 
+use EdenAi\Api;
 use EdenAI\Objects\DeepfakeObject;
 use EdenAI\Objects\DetectedObject;
 use EdenAI\Objects\ExplicitContent as ExplicitContentObject;
@@ -9,6 +10,7 @@ use EdenAI\Objects\ModeratedText;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @see Api
  * @method static ExplicitContentObject checkExplicitContent(array $params)
  * @method static DeepfakeObject detectDeepfake(array $params)
  * @method static DetectedObject detectObject(array $params)

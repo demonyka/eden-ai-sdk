@@ -10,13 +10,25 @@ use Illuminate\Support\Facades\Config;
 use JsonException;
 
 /**
- * Class ExplicitContent.
+ * Class TextModeration.
  *
  * @mixin Http
  */
 trait TextModeration
 {
     /**
+     * Moderate text
+     *
+     * <code>
+     * $params = [
+     *       'text'                        => '',  // string     - Required. Text for moderation
+     *       'language'                    => '',  // string     - Optional. Language (Default in config)
+     *       'providers'                   => '',  // string     - (Optional). providers separated by commas (Default in Config)
+     * ]
+     * </code>
+     *
+     * @link https://app.edenai.run/bricks/text/moderation
+     *
      * @throws EdenAIException|JsonException
      */
     public function moderateText(array $params): ModeratedText

@@ -9,13 +9,24 @@ use Illuminate\Support\Facades\Config;
 use JsonException;
 
 /**
- * Class ExplicitContent.
+ * Class ObjectDetection.
  *
  * @mixin Http
  */
 trait ObjectDetection
 {
     /**
+     * Object detection
+     *
+     * <code>
+     * $params = [
+     *       'file_url'                    => '',  // string     - Required. direct URL to photo
+     *       'providers'                   => '',  // string     - (Optional). providers separated by commas (Default in Config)
+     * ]
+     * </code>
+     *
+     * @link https://app.edenai.run/bricks/text/moderation
+     *
      * @throws EdenAIException|JsonException
      */
     public function detectObject(array $params): DetectedObject

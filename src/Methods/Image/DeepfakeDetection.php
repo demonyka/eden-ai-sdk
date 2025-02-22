@@ -9,13 +9,24 @@ use Illuminate\Support\Facades\Config;
 use JsonException;
 
 /**
- * Class ExplicitContent.
+ * Class DeepfakeDetection.
  *
  * @mixin Http
  */
 trait DeepfakeDetection
 {
     /**
+     * Deepfake Detection
+     *
+     * <code>
+     * $params = [
+     *       'file_url'                    => '',  // string     - Required. direct URL to photo
+     *       'providers'                   => '',  // string     - (Optional). providers separated by commas (Default in Config)
+     * ]
+     * </code>
+     *
+     * @link https://app.edenai.run/bricks/text/moderation
+     *
      * @throws EdenAIException|JsonException
      */
     public function detectDeepfake(array $params): DeepfakeObject

@@ -11,6 +11,7 @@ use EdenAI\Exceptions\EdenAIException;
 use EdenAI\HttpClients\HttpClientInterface;
 use EdenAI\Traits\Http;
 use EdenAI\Methods\Image\ExplicitContent;
+
 class Api
 {
     use ExplicitContent;
