@@ -32,7 +32,7 @@ class ExplicitContent extends BaseObject
         }, 0);
     }
 
-    public function getRate(): float
+    public function getAverageRate(): float
     {
         $totalProviders = count($this->providers);
 
@@ -47,7 +47,7 @@ class ExplicitContent extends BaseObject
         return $sum / $totalProviders;
     }
 
-    public function getScore(): float
+    public function getAverageScore(): float
     {
         $totalProviders = count($this->providers);
 
