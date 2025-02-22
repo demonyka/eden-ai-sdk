@@ -2,19 +2,19 @@
 
 namespace Demonyga\EdenAiSdk\Managers;
 
-use Demonyga\EdenAiSdk\Technologies\Image\ExplicitContent;
+use Demonyga\EdenAiSdk\Api;
+use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
 
 class EdenAIManager
 {
-    protected ExplicitContent $explicitContent;
-
-    public function __construct()
+    /**
+     * @throws EdenAIException
+     */
+    public function __call(string $method, array $parameters)
     {
-        $this->explicitContent = new ExplicitContent();
-    }
+        $token = data_get('edenai', 'token');
 
-    public function explicitContent(): ExplicitContent
-    {
-        return $this->explicitContent;
+        $api = new Api($token);
+        return $api->$method(...$parameters);
     }
 }

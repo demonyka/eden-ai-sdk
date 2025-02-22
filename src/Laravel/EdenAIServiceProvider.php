@@ -23,7 +23,7 @@ class EdenAIServiceProvider extends ServiceProvider
     private function registerBindings(): void
     {
         $this->app->singleton('edenai', function ($app) {
-            return new EdenAIManager();
+            return new EdenAiManager();
         });
     }
 
