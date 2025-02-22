@@ -13,5 +13,10 @@ return [
     'object_detection' => [
         'providers' => 'google,amazon',
         'threshold' => 0.6
+    ],
+    'moderate_text' => [
+        'providers' => 'google',
+        'threshold' => 0.8,
+        'fallbackLanguage' => 'en'
     ]
 ];
