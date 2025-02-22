@@ -2,6 +2,7 @@
 
 namespace Demonyka\EdenAiSdk\Laravel;
 
+use Demonyga\EdenAiSdk\Managers\EdenAIManager;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Application as LaravelApplication;
 
@@ -12,10 +13,18 @@ class EdenAIServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Публикация конфигурации
         $this->offerPublishing();
+        $this->registerBindings();
+    }
+
+    private function registerBindings(): void
+    {
+        $this->app->singleton('edenai', function ($app) {
+            return new EdenAIManager();
+        });
     }
 
     /**
@@ -23,7 +32,7 @@ class EdenAIServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Если это Laravel, сливаем конфиг
         if ($this->app instanceof LaravelApplication) {
@@ -36,7 +45,6 @@ class EdenAIServiceProvider extends ServiceProvider
      */
     private function offerPublishing(): void
     {
-        // Публикация конфигурации для Laravel
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/config/edenai.php' => config_path('edenai.php'),
