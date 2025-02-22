@@ -1,12 +1,12 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\Methods\Image;
+namespace EdenAI\Methods\Image;
 
-use Demonyga\EdenAiSdk\EdenAIResponse;
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
-use Demonyga\EdenAiSdk\Traits\Http;
-use JsonException;
+use EdenAI\Exceptions\EdenAIException;
+use EdenAI\Objects\ExplicitContent\ExplicitContent as ExplicitContentObject;
+use EdenAI\Traits\Http;
 use Illuminate\Support\Facades\Config;
+use JsonException;
 
 /**
  * Class ExplicitContent.
@@ -18,15 +18,15 @@ trait ExplicitContent
     /**
      * @throws EdenAIException|JsonException
      */
-    public function checkExplicitContent(array $params): EdenAIResponse
+    public function checkExplicitContent(array $params): ExplicitContentObject
     {
         if (!isset($params["file_url"])) {
             throw new EdenAIException("Missing required parameter 'file_url'");
         }
         if (!isset($params["providers"])) {
-            $params["providers"] = Config::get('edenai.exclipt_content.providers');
+            $params["providers"] = Config::get('edenai.exclipt_content.providers', 'clarifai,google');
         }
 
-        return $this->post('image/explicit_content', $params);
+        return new ExplicitContentObject($this->post('image/explicit_content', $params)->getDecodedBody());
     }
 }

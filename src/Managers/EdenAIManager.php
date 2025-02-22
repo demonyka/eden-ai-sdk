@@ -1,9 +1,9 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\Managers;
+namespace EdenAI\Managers;
 
-use Demonyga\EdenAiSdk\Api;
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
+use EdenAI\Api;
+use EdenAI\Exceptions\EdenAIException;
 
 class EdenAIManager
 {

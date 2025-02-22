@@ -1,8 +1,8 @@
 <?php
 
-namespace Demonyga\EdenAiSdk;
+namespace EdenAI;
 
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
+use EdenAI\Exceptions\EdenAIException;
 use GuzzleHttp\Promise\PromiseInterface;
 use InvalidArgumentException;
 use JsonException;
@@ -183,13 +183,5 @@ final class EdenAIResponse
     public function getThrownException(): EdenAIException
     {
         return $this->thrownException;
-    }
-
-    /**
-     * @throws JsonException
-     */
-    public function toJson(): string
-    {
-        return json_encode($this->getDecodedBody(), JSON_THROW_ON_ERROR);
     }
 }

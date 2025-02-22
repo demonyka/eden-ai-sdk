@@ -1,17 +1,17 @@
 <?php
 
-namespace Demonyga\EdenAiSdk;
+namespace EdenAI;
 
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
+use EdenAI\Exceptions\EdenAIException;
 use GuzzleHttp\Promise\PromiseInterface;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
-use Demonyga\EdenAiSdk\HttpClients\GuzzleHttpClient;
-use Demonyga\EdenAiSdk\HttpClients\HttpClientInterface;
+use EdenAI\HttpClients\GuzzleHttpClient;
+use EdenAI\HttpClients\HttpClientInterface;
 
 final class EdenAIClient
 {
-    public const BASE_URL = 'https://api.edenai.run/v2';
+    public const BASE_URL = 'https://api.EdenAI.run/v2';
     private HttpClientInterface $httpClientHandler;
     private string $baseUrl;
 
@@ -72,7 +72,7 @@ final class EdenAIClient
     /**
      * @throws JsonException
      */
-    private function getResponse(EdenAIRequest $request, ResponseInterface|PromiseInterface|null $response): EdenAiResponse
+    private function getResponse(EdenAIRequest $request, ResponseInterface|PromiseInterface|null $response): EdenAIResponse
     {
         return new EdenAIResponse($request, $response);
     }

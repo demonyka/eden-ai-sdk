@@ -1,8 +1,8 @@
 <?php
 
-namespace Demonyga\EdenAiSdk;
+namespace EdenAI;
 
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
+use EdenAI\Exceptions\EdenAIException;
 
 /**
  * Class EdenAIRequest.

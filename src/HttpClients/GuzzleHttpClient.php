@@ -1,6 +1,6 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\HttpClients;
+namespace EdenAI\HttpClients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -10,7 +10,7 @@ use GuzzleHttp\Promise\Utils;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Client\RequestExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
+use EdenAI\Exceptions\EdenAIException;
 use Throwable;
 
 /**

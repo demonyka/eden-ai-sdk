@@ -1,12 +1,12 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\Traits;
+namespace EdenAI\Traits;
 
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
-use Demonyga\EdenAiSdk\HttpClients\HttpClientInterface;
-use Demonyga\EdenAiSdk\EdenAIClient;
-use Demonyga\EdenAiSdk\EdenAIRequest;
-use Demonyga\EdenAiSdk\EdenAIResponse;
+use EdenAI\Exceptions\EdenAIException;
+use EdenAI\HttpClients\HttpClientInterface;
+use EdenAI\EdenAIClient;
+use EdenAI\EdenAIRequest;
+use EdenAI\EdenAIResponse;
 use JsonException;
 
 /**

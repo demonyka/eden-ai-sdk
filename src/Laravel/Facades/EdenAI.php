@@ -1,12 +1,13 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\Laravel\Facades;
+namespace EdenAI\Laravel\Facades;
 
+use EdenAI\Objects\ExplicitContent\ExplicitContent as ExplicitContentObject;
 use Illuminate\Support\Facades\Facade;
 
 /**
  *
- * @method static mixed checkExplicitContent(array $params)
+ * @method static ExplicitContentObject checkExplicitContent(array $params)
  */
 class EdenAI extends Facade
 {

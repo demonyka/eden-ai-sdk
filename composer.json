@@ -5,13 +5,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Demonyka\\EdenAiSdk\\": "src/"
+            "EdenAI\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Demonyka\\EdenAiSdk\\Laravel\\EdenAIServiceProvider"
+                "EdenAI\\Laravel\\EdenAIServiceProvider"
             ]
         }
     },

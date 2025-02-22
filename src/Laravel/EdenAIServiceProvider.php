@@ -1,8 +1,8 @@
 <?php
 
-namespace Demonyka\EdenAiSdk\Laravel;
+namespace EdenAI\Laravel;
 
-use Demonyga\EdenAiSdk\Managers\EdenAIManager;
+use EdenAI\Managers\EdenAIManager;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Application as LaravelApplication;
 
@@ -23,7 +23,7 @@ class EdenAIServiceProvider extends ServiceProvider
     private function registerBindings(): void
     {
         $this->app->singleton('edenai', function ($app) {
-            return new EdenAiManager();
+            return new EdenAIManager();
         });
     }
 

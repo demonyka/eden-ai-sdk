@@ -1,12 +1,12 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\Exceptions;
+namespace EdenAI\Exceptions;
 
-use Demonyga\EdenAiSdk\EdenAIResponse;
+use EdenAI\EdenAIResponse;
 use Exception;
 
 /**
- * Class TelegramSDKException.
+ * Class EdenAIException.
  */
 class EdenAIException extends Exception
 {

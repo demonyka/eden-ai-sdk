@@ -1,13 +1,13 @@
 <?php
 
-namespace Demonyga\EdenAiSdk;
+namespace EdenAI;
 
 use BadMethodCallException;
 use Illuminate\Support\Traits\Macroable;
-use Demonyga\EdenAiSdk\Exceptions\EdenAIException;
-use Demonyga\EdenAiSdk\HttpClients\HttpClientInterface;
-use Demonyga\EdenAiSdk\Traits\Http;
-use Demonyga\EdenAiSdk\Methods\Image\ExplicitContent;
+use EdenAI\Exceptions\EdenAIException;
+use EdenAI\HttpClients\HttpClientInterface;
+use EdenAI\Traits\Http;
+use EdenAI\Methods\Image\ExplicitContent;
 class Api
 {
     use ExplicitContent;
@@ -16,13 +16,13 @@ class Api
         Macroable::__call as macroCall;
     }
 
-    /** @var string The name of the environment variable that contains the Telegram Bot API Access Token. */
+    /** @var string The name of the environment variable that contains the Access Token. */
     public const TOKEN_ENV_NAME = 'EDEN_AI_TOKEN';
 
     /**
-     * Instantiates a new Telegram super-class object.
+     * Instantiates a new super-class object.
      *
-     * @param string|null $token The Telegram Bot API Access Token.
+     * @param string|null $token The Access Token.
      * @param HttpClientInterface|null $httpClientHandler (Optional) Custom HTTP Client Handler.
      * @param string|null $baseUrl (Optional) Custom base bot url.
      * @throws EdenAIException

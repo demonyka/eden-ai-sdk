@@ -1,6 +1,6 @@
 <?php
 
-namespace Demonyga\EdenAiSdk\HttpClients;
+namespace EdenAI\HttpClients;
 
 use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\ResponseInterface;
