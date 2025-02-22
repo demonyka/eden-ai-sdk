@@ -25,7 +25,7 @@ trait ObjectDetection
      * ]
      * </code>
      *
-     * @link https://app.edenai.run/bricks/text/moderation
+     * @link https://app.edenai.run/bricks/image/object-detection
      *
      * @throws EdenAIException|JsonException
      */

@@ -18,5 +18,10 @@ return [
         'providers' => 'google',
         'threshold' => 0.8,
         'fallbackLanguage' => 'en'
+    ],
+    'code_generation' => [
+        'providers' => 'openai',
+        'temperature' => 0.1,
+        'max_tokens' => 500
     ]
 ];

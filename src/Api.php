@@ -5,6 +5,7 @@ namespace EdenAI;
 use BadMethodCallException;
 use EdenAI\Methods\Image\DeepfakeDetection;
 use EdenAI\Methods\Image\ObjectDetection;
+use EdenAI\Methods\Text\CodeGeneration;
 use EdenAI\Methods\Text\TextModeration;
 use Illuminate\Support\Traits\Macroable;
 use EdenAI\Exceptions\EdenAIException;
@@ -18,6 +19,7 @@ class Api
     use DeepfakeDetection;
     use ObjectDetection;
     use TextModeration;
+    use CodeGeneration;
     use Http;
     use Macroable {
         Macroable::__call as macroCall;

@@ -25,7 +25,7 @@ trait DeepfakeDetection
      * ]
      * </code>
      *
-     * @link https://app.edenai.run/bricks/text/moderation
+     * @link https://app.edenai.run/bricks/image/deepfake-detection
      *
      * @throws EdenAIException|JsonException
      */
