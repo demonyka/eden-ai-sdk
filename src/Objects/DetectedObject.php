@@ -13,6 +13,20 @@ class DetectedObject extends BaseObject
         ];
     }
 
+    /**
+     * Get the average confidence for each detected label across all providers.
+     *
+     * This method calculates the average confidence for each label by summing up the confidence values
+     * from all providers that have a status of 'success'. It returns an array where each key is the label,
+     * and the value is the average confidence for that label.
+     *
+     * @return array
+     * - An associative array where the key is the label and the value is the average confidence.
+     * - If no items are detected, an empty array is returned.
+     *
+     * @example
+     * $detectedObject->getItems(); // Returns an array of average confidences for each detected label.
+     */
     public function getItems(): array
     {
         $items = [];
@@ -41,10 +55,19 @@ class DetectedObject extends BaseObject
     }
 
     /**
-     * Get the confidence for a specific label.
+     * Get the average confidence for a specific label.
      *
-     * @param string $label
+     * This method returns the average confidence for a given label, based on the data collected from all providers.
+     * If the label is not found, it returns null.
+     *
+     * @param string $label The label to get the confidence for.
+     *
      * @return float|null
+     * - The average confidence for the label.
+     * - null if the label is not found.
+     *
+     * @example
+     * $detectedObject->item('cat'); // Returns the average confidence for the label 'cat'.
      */
     public function item(string $label): ?float
     {
@@ -54,6 +77,21 @@ class DetectedObject extends BaseObject
         return $items[$label] ?? null;
     }
 
+    /**
+     * Check if a specific label is detected with sufficient confidence.
+     *
+     * This method checks if the given label is present in the detected items and if its average confidence
+     * is above a configured threshold. It returns true if the label's confidence exceeds the threshold, otherwise false.
+     *
+     * @param string $label The label to check for.
+     *
+     * @return bool
+     * - true if the label exists and its confidence is above the threshold.
+     * - false otherwise.
+     *
+     * @example
+     * $detectedObject->hasItem('cat'); // Returns true if the confidence for 'cat' is above the threshold.
+     */
     public function hasItem(string $label): bool
     {
         $label = strtolower($label);

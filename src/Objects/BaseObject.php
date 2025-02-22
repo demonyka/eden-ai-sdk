@@ -23,12 +23,14 @@ abstract class BaseObject extends Collection
     protected function initializeProviders(array $data): void
     {
         foreach ($data as $key => $provider) {
-            if (isset($provider['type']) && $provider['type'] == 'Invalid request') {
-                Log::error("Invalid request provider [$provider[type]]");
+            if (isset($provider['error'])) {
+                Log::error($provider['error']['message']);
             }
+
             if (isset($provider['status'])) {
                 $this->providers[$key] = new Provider($provider);
-                if ($provider['status'] === 'fail') {
+
+                if ($provider['status'] === 'fail' && isset($provider['error']['message'])) {
                     Log::error($provider['error']['message']);
                 }
             }

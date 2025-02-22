@@ -23,5 +23,10 @@ return [
         'providers' => 'openai',
         'temperature' => 0.1,
         'max_tokens' => 500
+    ],
+    'text_to_speech' => [
+        'providers' => 'openai',
+        'fallbackLanguage' => 'en',
+        'option' => 'MALE'
     ]
 ];

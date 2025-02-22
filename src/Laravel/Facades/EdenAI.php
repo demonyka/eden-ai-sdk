@@ -8,6 +8,7 @@ use EdenAI\Objects\DetectedObject;
 use EdenAI\Objects\ExplicitContent as ExplicitContentObject;
 use EdenAI\Objects\GeneratedCode;
 use EdenAI\Objects\ModeratedText;
+use EdenAI\Objects\SpeechesText;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static DetectedObject detectObject(array $params)
  * @method static ModeratedText moderateText(array $params)
  * @method static GeneratedCode generateCode(array $params)
+ * @method static SpeechesText textToSpeech(array $params)
  */
 class EdenAI extends Facade
 {

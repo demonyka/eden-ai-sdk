@@ -12,34 +12,69 @@ class ExplicitContent extends BaseObject
             'providers' => $this->providers,
         ];
     }
+
+    /**
+     * Get the average rate of NSFW likelihood across all providers.
+     *
+     * This method calculates the average 'nsfw_likelihood' value for all the providers
+     * in the `providers` array. If no providers exist, it returns 0.
+     *
+     * @return float
+     * - The average NSFW likelihood rate across all providers.
+     * - Returns 0 if no providers are available.
+     *
+     * @example
+     * $explicitContent->getAverageRate(); // Returns the average NSFW likelihood rate across all providers.
+     */
     public function getAverageRate(): float
     {
-        $totalProviders = count($this->providers);
+        $sum = 0;
+        $validProviders = 0;
 
-        if ($totalProviders === 0) {
+        foreach ($this->providers as $provider) {
+            if ($provider['status'] !== 'success') continue;
+            $sum += $provider['nsfw_likelihood'];
+            $validProviders++;
+        }
+
+        if ($validProviders === 0) {
             return 0;
         }
 
-        $sum = array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider['nsfw_likelihood'];
-        }, 0);
-
-        return $sum / $totalProviders;
+        return $sum / $validProviders;
     }
 
+
+
+    /**
+     * Get the average score of NSFW likelihood across all providers.
+     *
+     * This method calculates the average 'nsfw_likelihood_score' value for all the providers
+     * in the `providers` array. If no providers exist, it returns 0.
+     *
+     * @return float
+     * - The average NSFW likelihood score across all providers.
+     * - Returns 0 if no providers are available.
+     *
+     * @example
+     * $explicitContent->getAverageScore(); // Returns the average NSFW likelihood score across all providers.
+     */
     public function getAverageScore(): float
     {
-        $totalProviders = count($this->providers);
+        $sum = 0;
+        $validProviders = 0;
 
-        if ($totalProviders === 0) {
+        foreach ($this->providers as $provider) {
+            if ($provider['status'] !== 'success') continue;
+            $sum += $provider['nsfw_likelihood_score'];
+            $validProviders++;
+        }
+
+        if ($validProviders === 0) {
             return 0;
         }
 
-        $sum = array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider['nsfw_likelihood_score'];
-        }, 0);
-
-        return $sum / $totalProviders;
+        return $sum / $validProviders;
     }
 
     public function isNSFW(): bool
