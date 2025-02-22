@@ -9,5 +9,9 @@ return [
     'deepfake_detection' => [
         'providers' => 'sightengine',
         'threshold' => 0.8
+    ],
+    'object_detection' => [
+        'providers' => 'google,amazon',
+        'threshold' => 0.6
     ]
 ];

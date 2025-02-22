@@ -6,35 +6,12 @@ use Illuminate\Support\Facades\Config;
 
 class ExplicitContent extends BaseObject
 {
-
-    protected array $providers = [];
-    public function __construct(array $data = [])
-    {
-        parent::__construct($data);
-
-        foreach ($data as $key => $provider) {
-            $this->providers[$key] = new Provider($provider);
-        }
-    }
     public function relations(): array
     {
         return [
             'providers' => $this->providers,
         ];
     }
-
-    public function getProviders(): array
-    {
-        return $this->providers;
-    }
-
-    public function getCost(): float
-    {
-        return array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider->getCost();
-        }, 0);
-    }
-
     public function getAverageRate(): float
     {
         $totalProviders = count($this->providers);

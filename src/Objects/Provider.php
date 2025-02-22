@@ -2,7 +2,7 @@
 
 namespace EdenAI\Objects;
 
-class Provider extends BaseObject
+class Provider extends Collection
 {
     public function __construct(array $data = [])
     {

@@ -6,33 +6,11 @@ use Illuminate\Support\Facades\Config;
 
 class DeepfakeObject extends BaseObject
 {
-
-    protected array $providers = [];
-    public function __construct(array $data = [])
-    {
-        parent::__construct($data);
-
-        foreach ($data as $key => $provider) {
-            $this->providers[$key] = new Provider($provider);
-        }
-    }
     public function relations(): array
     {
         return [
             'providers' => $this->providers,
         ];
-    }
-
-    public function getProviders(): array
-    {
-        return $this->providers;
-    }
-
-    public function getCost(): float
-    {
-        return array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider->getCost();
-        }, 0);
     }
 
     public function getAverageScore(): float
@@ -43,9 +21,14 @@ class DeepfakeObject extends BaseObject
             return 0;
         }
 
-        $sum = array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider['deepfake_score'];
-        }, 0);
+        $sum = 0;
+
+        foreach ($this->providers as $provider) {
+            if ($provider['status'] !== 'success') {
+                continue;
+            }
+            $sum += $provider['deepfake_score'];
+        }
 
         return $sum / $totalProviders;
     }
