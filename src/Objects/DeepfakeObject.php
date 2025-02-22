@@ -1,12 +1,10 @@
 <?php
 
-namespace EdenAI\Objects\ExplicitContent;
+namespace EdenAI\Objects;
 
-use EdenAI\Objects\BaseObject;
-use EdenAI\Objects\Provider;
 use Illuminate\Support\Facades\Config;
 
-class ExplicitContent extends BaseObject
+class DeepfakeObject extends BaseObject
 {
 
     protected array $providers = [];
@@ -25,26 +23,16 @@ class ExplicitContent extends BaseObject
         ];
     }
 
+    public function getProviders(): array
+    {
+        return $this->providers;
+    }
+
     public function getCost(): float
     {
         return array_reduce($this->providers, function ($sum, $provider) {
             return $sum + $provider->getCost();
         }, 0);
-    }
-
-    public function getAverageRate(): float
-    {
-        $totalProviders = count($this->providers);
-
-        if ($totalProviders === 0) {
-            return 0;
-        }
-
-        $sum = array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider['nsfw_likelihood'];
-        }, 0);
-
-        return $sum / $totalProviders;
     }
 
     public function getAverageScore(): float
@@ -56,15 +44,15 @@ class ExplicitContent extends BaseObject
         }
 
         $sum = array_reduce($this->providers, function ($sum, $provider) {
-            return $sum + $provider['nsfw_likelihood_score'];
+            return $sum + $provider['deepfake_score'];
         }, 0);
 
         return $sum / $totalProviders;
     }
 
-    public function isSafe(): bool
+    public function isDeepfake(): bool
     {
         $score = $this->getAverageScore();
-        return $score < Config::get('edenai.exclipt_content.threshold', 0.8);
+        return $score > Config::get('edenai.deepfake_detection.threshold', 0.8);
     }
 }

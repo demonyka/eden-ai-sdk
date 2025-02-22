@@ -2,12 +2,14 @@
 
 namespace EdenAI\Laravel\Facades;
 
-use EdenAI\Objects\ExplicitContent\ExplicitContent as ExplicitContentObject;
+use EdenAI\Objects\DeepfakeObject;
+use EdenAI\Objects\ExplicitContent as ExplicitContentObject;
 use Illuminate\Support\Facades\Facade;
 
 /**
  *
  * @method static ExplicitContentObject checkExplicitContent(array $params)
+ * @method static DeepfakeObject checkDeepfake(array $params)
  */
 class EdenAI extends Facade
 {

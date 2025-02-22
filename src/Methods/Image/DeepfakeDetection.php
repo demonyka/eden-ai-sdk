@@ -3,7 +3,7 @@
 namespace EdenAI\Methods\Image;
 
 use EdenAI\Exceptions\EdenAIException;
-use EdenAI\Objects\ExplicitContent as ExplicitContentObject;
+use EdenAI\Objects\DeepfakeObject;
 use EdenAI\Traits\Http;
 use Illuminate\Support\Facades\Config;
 use JsonException;
@@ -13,20 +13,20 @@ use JsonException;
  *
  * @mixin Http
  */
-trait ExplicitContent
+trait DeepfakeDetection
 {
     /**
      * @throws EdenAIException|JsonException
      */
-    public function checkExplicitContent(array $params): ExplicitContentObject
+    public function checkDeepfake(array $params): DeepfakeObject
     {
         if (!isset($params["file_url"])) {
             throw new EdenAIException("Missing required parameter 'file_url'");
         }
         if (!isset($params["providers"])) {
-            $params["providers"] = Config::get('edenai.exclipt_content.providers', 'clarifai,google');
+            $params["providers"] = Config::get('edenai.deepfake_detection.providers', 'sightengine');
         }
 
-        return new ExplicitContentObject($this->post('image/explicit_content', $params)->getDecodedBody());
+        return new DeepfakeObject($this->post('image/deepfake_detection', $params)->getDecodedBody());
     }
 }
