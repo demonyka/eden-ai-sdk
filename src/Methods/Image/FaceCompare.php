@@ -22,6 +22,8 @@ trait FaceCompare
      * $params = [
      *       'file1_url'                    => '',  // string     - Required. direct URL to photo
      *       'file2_url'                    => '',  // string     - Required. direct URL to photo
+     *       'file1'                    => '',  // string         - Required if url is not specified. file photo
+     *       'file2'                    => '',  // string         - Required if url is not specified. file photo
      *       'providers'                   => '',  // string     - (Optional). providers separated by commas (Default in Config)
      * ]
      * </code>
@@ -32,9 +34,12 @@ trait FaceCompare
      */
     public function compareFace(array $params): FaceCompared
     {
-        if (!isset($params["file1_url"]) || !isset($params["file2_url"])) {
-            throw new EdenAIException("Missing required parameter 'file_url'");
+        if ((isset($params["file1_url"]) && !isset($params["file2_url"])) || (!isset($params["file1_url"]) && isset($params["file2_url"]))) {
+            throw new EdenAIException("Both file URLs must be provided together.");
+        } elseif ((isset($params["file1"]) && !isset($params["file2"])) || (!isset($params["file1"]) && isset($params["file2"]))) {
+            throw new EdenAIException("Both files must be provided together.");
         }
+
         if (!isset($params["providers"])) {
             $params["providers"] = Config::get('edenai.face_compare.providers', 'amazon');
         }

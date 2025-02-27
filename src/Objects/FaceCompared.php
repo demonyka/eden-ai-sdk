@@ -2,7 +2,7 @@
 
 namespace EdenAI\Objects;
 
-class FaceCompared extends ExplicitContent
+class FaceCompared extends BaseObject
 {
     public function relations(): array
     {
