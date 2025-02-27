@@ -6,6 +6,7 @@ use EdenAi\Api;
 use EdenAI\Objects\DeepfakeObject;
 use EdenAI\Objects\DetectedObject;
 use EdenAI\Objects\ExplicitContent as ExplicitContentObject;
+use EdenAI\Objects\FaceCompared;
 use EdenAI\Objects\GeneratedCode;
 use EdenAI\Objects\ModeratedText;
 use EdenAI\Objects\SpeechesText;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static ModeratedText moderateText(array $params)
  * @method static GeneratedCode generateCode(array $params)
  * @method static SpeechesText textToSpeech(array $params)
+ * @method static FaceCompared compareFace(array $params)
  */
 class EdenAI extends Facade
 {

@@ -5,6 +5,7 @@ namespace EdenAI;
 use BadMethodCallException;
 use EdenAI\Methods\Audio\TextToSpeech;
 use EdenAI\Methods\Image\DeepfakeDetection;
+use EdenAI\Methods\Image\FaceCompare;
 use EdenAI\Methods\Image\ObjectDetection;
 use EdenAI\Methods\Text\CodeGeneration;
 use EdenAI\Methods\Text\TextModeration;
@@ -22,6 +23,7 @@ class Api
     use TextModeration;
     use CodeGeneration;
     use TextToSpeech;
+    use FaceCompare;
     use Http;
     use Macroable {
         Macroable::__call as macroCall;

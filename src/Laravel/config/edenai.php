@@ -28,5 +28,9 @@ return [
         'providers' => 'openai',
         'fallbackLanguage' => 'en',
         'option' => 'MALE'
+    ],
+    'face_compare' => [
+        'providers' => 'amazon',
+        'threshold' => 0.9,
     ]
 ];
