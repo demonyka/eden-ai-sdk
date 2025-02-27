@@ -2,6 +2,8 @@
 
 namespace EdenAI\Objects;
 
+use Illuminate\Support\Facades\Config;
+
 class FaceCompared extends BaseObject
 {
     public function relations(): array
@@ -29,5 +31,11 @@ class FaceCompared extends BaseObject
         }
 
         return $totalConfidence / $count;
+    }
+
+    public function isCompared(): bool
+    {
+        $confidence = $this->getAverageConfidence();
+        return $confidence > Config::get('edenai.face_compare.threshold', 0.9);
     }
 }
